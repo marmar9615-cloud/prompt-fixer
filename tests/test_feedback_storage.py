@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from sqlalchemy.pool import StaticPool
 from sqlmodel import SQLModel, Session, create_engine
 
 from app.db import get_session
@@ -6,7 +7,11 @@ from app.main import app
 
 
 def test_feedback_storage_roundtrip():
-    engine = create_engine("sqlite://", connect_args={"check_same_thread": False})
+    engine = create_engine(
+        "sqlite://",
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+    )
     SQLModel.metadata.create_all(engine)
 
     def override_session():
