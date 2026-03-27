@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompt Fixer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Prompt Fixer</h1>
+      <p>Improve prompts, test model outputs, and rate results.</p>
+
+      <section>
+        <h2>1) Input Prompt</h2>
+        <textarea id="rawPrompt" rows="6" placeholder="Enter your original prompt"></textarea>
+        <button id="improveBtn">Improve Prompt</button>
+      </section>
+
+      <section>
+        <h2>2) Improved Prompt Preview</h2>
+        <pre id="improvedPreview"></pre>
+        <div id="consensus"></div>
+      </section>
+
+      <section>
+        <h2>3) Test Prompt Against Model</h2>
+        <label>Model
+          <select id="modelName">
+            <option value="gpt-4o-mini">gpt-4o-mini</option>
+            <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          </select>
+        </label>
+        <button id="testBtn">Run Test</button>
+        <pre id="modelOutput"></pre>
+        <p id="validation"></p>
+      </section>
+
+      <section>
+        <h2>4) Rate Output</h2>
+        <label>Rating (1-5)
+          <input id="rating" type="number" min="1" max="5" value="5" />
+        </label>
+        <label>Rank (1-10)
+          <input id="rank" type="number" min="1" max="10" value="1" />
+        </label>
+        <button id="saveFeedbackBtn">Save Feedback</button>
+        <p id="saveStatus"></p>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
